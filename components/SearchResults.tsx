@@ -16,7 +16,6 @@ const SearchResults = ({ results }: SearchResultsProps) => (
             <span class="result-kind">{kind}</span>
             <h2>{result.displayName ?? result.id}</h2>
             {result.body && <p class="result-body">{result.body}</p>}
-            <p class="result-id">{result.id}</p>
           </div>
           {result.tombstone && <span class="result-status">Deleted</span>}
         </li>
