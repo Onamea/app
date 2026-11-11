@@ -10,7 +10,9 @@ describe("getExtensionStore", () => {
   })
 
   it("returns the Chrome Web Store search page for Chrome", () => {
-    expect(getExtensionStore("Mozilla/5.0 AppleWebKit/537.36 Chrome/130.0.0.0 Safari/537.36")).toEqual({
+    expect(
+      getExtensionStore("Mozilla/5.0 AppleWebKit/537.36 Chrome/130.0.0.0 Safari/537.36")
+    ).toEqual({
       name: "Chrome Web Store",
       url: "https://chromewebstore.google.com/search/onamea"
     })

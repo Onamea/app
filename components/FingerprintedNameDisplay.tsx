@@ -1,8 +1,11 @@
 import { useEffect } from "preact/hooks"
-import { extensionAvailable, getOnameaBridge, identityResult } from "../lib/extensionAvailability.ts"
+import {
+  extensionAvailable,
+  getOnameaBridge,
+  identityResult
+} from "../lib/extensionAvailability.ts"
 
 const FingerprintedNameDisplay = () => {
-
   const available = extensionAvailable.value
 
   useEffect(() => {
@@ -15,7 +18,7 @@ const FingerprintedNameDisplay = () => {
     if (typeof onamea?.identify !== "function") {
       identityResult.value = {
         status: "error",
-        message: "Could not identify this browser.",
+        message: "Could not identify this browser."
       }
       return
     }
@@ -39,7 +42,7 @@ const FingerprintedNameDisplay = () => {
             message:
               error instanceof Error && error.message !== ""
                 ? error.message
-                : "Could not identify this browser.",
+                : "Could not identify this browser."
           }
         }
       }

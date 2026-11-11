@@ -44,6 +44,41 @@ input {
   margin-top: 2em;
 }
 
+.create-item-success {
+  margin-top: 12px;
+  padding-left: 12px;
+  border-left: 3px solid #36714e;
+  color: #28523a;
+}
+
+.create-item-success p {
+  margin: 0 0 8px;
+  font-weight: 700;
+}
+
+.create-item-success dl {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.create-item-success dl > div {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 8px;
+}
+
+.create-item-success dt {
+  font-weight: 700;
+}
+
+.create-item-success dd {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
 .create-item-section h2 {
   margin: 0 0 12px;
   font-size: 16px;

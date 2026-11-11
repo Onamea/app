@@ -11,9 +11,7 @@ const App = () => (
     <ExtensionStatus />
     <FingerprintedNameDisplay />
     <SearchForm />
-    { identityResult.value.status === "identified" &&
-      <CreateItemForm />
-    }
+    {identityResult.value.status === "identified" && <CreateItemForm />}
   </main>
 )
 

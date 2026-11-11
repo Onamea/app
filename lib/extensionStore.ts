@@ -3,10 +3,13 @@ export type ExtensionStore = {
   url: string
 }
 
-export const getExtensionStore = (userAgent = globalThis.navigator.userAgent): ExtensionStore | undefined => {
-  const isFirefox = /Firefox\//.test(userAgent)
-    && /Gecko\//.test(userAgent)
-    && /\bFxiOS\//.test(userAgent) === false
+export const getExtensionStore = (
+  userAgent = globalThis.navigator.userAgent
+): ExtensionStore | undefined => {
+  const isFirefox =
+    /Firefox\//.test(userAgent) &&
+    /Gecko\//.test(userAgent) &&
+    /\bFxiOS\//.test(userAgent) === false
 
   if (isFirefox) {
     return {
@@ -15,8 +18,9 @@ export const getExtensionStore = (userAgent = globalThis.navigator.userAgent): E
     }
   }
 
-  const isChrome = /\bChrome\//.test(userAgent)
-    && /\b(Edg(?:A|iOS)?|OPR|SamsungBrowser|Brave)\//.test(userAgent) === false
+  const isChrome =
+    /\bChrome\//.test(userAgent) &&
+    /\b(Edg(?:A|iOS)?|OPR|SamsungBrowser|Brave)\//.test(userAgent) === false
 
   if (isChrome) {
     return {
