@@ -1,11 +1,12 @@
 import { signal } from "@preact/signals"
-import type { IdentityWithMessages } from "@onamea/crdt"
+import type { IdentityWithMessages, Message, Operation } from "@onamea/crdt"
 
-export type OnameaBridge = {
-	namespace?: unknown
-	marker?: unknown
-  identify?: () => Promise<IdentityWithMessages>
-	sign?: () => Promise<unknown>
+export type OnameaAPI = {
+  readonly namespace: "ONAMEA:BRIDGE"
+  readonly marker: "ONAMEA_BRIDGE_V0"
+  readonly version: "1"
+  identify(): Promise<IdentityWithMessages>
+  sign(data: Operation | Operation[]): Promise<{ signedMessages: Message[] }>
 }
 
 export type IdentityResult =
@@ -18,7 +19,7 @@ export const extensionAvailable = signal<boolean | undefined>(undefined)
 export const identityResult = signal<IdentityResult>({ status: "idle" })
 
 export const getOnameaBridge = () =>
-	(globalThis as typeof globalThis & { Onamea?: OnameaBridge }).Onamea
+	(globalThis as typeof globalThis & { Onamea?: OnameaAPI }).Onamea
 
 export const checkIsAvailable = () => {
   const onamea = getOnameaBridge()

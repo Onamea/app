@@ -1,5 +1,6 @@
 import { useState } from "preact/hooks"
-import type { JSX } from "preact"
+import type { TargetedEvent } from "preact"
+import ErrorDisplay, { useErrors } from "./ErrorDisplay.tsx"
 import SearchResults from "./SearchResults.tsx"
 import { search, type SearchResult } from "../lib/search.ts"
 
@@ -7,12 +8,12 @@ const SearchForm = () => {
   const [term, setTerm] = useState("")
   const [submittedTerm, setSubmittedTerm] = useState("")
   const [results, setResults] = useState<SearchResult[] | undefined>()
-  const [error, setError] = useState("")
+  const { errors, setError, clearErrors } = useErrors()
   const [loading, setLoading] = useState(false)
 
-  const handleSubmit = async (event: JSX.TargetedEvent<HTMLFormElement, SubmitEvent>) => {
+  const handleSubmit = async (event: TargetedEvent<HTMLFormElement, SubmitEvent>) => {
     event.preventDefault()
-    setError("")
+    clearErrors()
     setResults(undefined)
 
     try {
@@ -28,11 +29,11 @@ const SearchForm = () => {
     }
   }
 
-  const handleChange = (event: JSX.TargetedEvent<HTMLInputElement, Event>) => {
+  const handleChange = (event: TargetedEvent<HTMLInputElement, Event>) => {
     setTerm(event.currentTarget.value)
     setSubmittedTerm("")
     setResults(undefined)
-    setError("")
+    clearErrors()
   }
 
   return (
@@ -60,11 +61,7 @@ const SearchForm = () => {
           Searching Onamea...
         </p>
       )}
-      {error && (
-        <p class="search-error" role="alert">
-          {error}
-        </p>
-      )}
+      <ErrorDisplay errors={errors} />
       {results && results.length === 0 && (
         <p class="search-message" role="status">
           No results for "{submittedTerm}"
