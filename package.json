@@ -18,8 +18,8 @@
     "cf:deploy": "pnpm build && wrangler deploy"
   },
   "dependencies": {
-    "@onamea/crdt": "npm:@jsr/onamea__crdt@0.6.2",
-    "@onamea/types": "npm:@jsr/onamea__types@^0.5.3",
+    "@onamea/crdt": "0.6.7",
+    "@onamea/types": "0.5.4",
     "@preact/signals": "^2.11.3",
     "preact": "^10.29.8"
   },
